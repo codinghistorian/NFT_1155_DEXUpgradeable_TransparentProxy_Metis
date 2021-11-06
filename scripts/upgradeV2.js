@@ -1,0 +1,35 @@
+// We require the Hardhat Runtime Environment explicitly here. This is optional
+// but useful for running the script in a standalone fashion through `node <script>`.
+//
+// When running the script with `npx hardhat run <script>` you'll find the Hardhat
+// Runtime Environment's members available in the global scope.
+const hre = require("hardhat");
+const { ethers, upgrades } = require("hardhat");
+async function main() {
+  // Hardhat always runs the compile task when running scripts with its command
+  // line interface.
+  //
+  // If this script is run directly using `node` you may want to call compile
+  // manually to make sure everything is compiled
+  // await hre.run('compile');
+
+  // We get the contract to deploy
+  const BibimbeatERC20 = await ethers.getContractFactory("BibimbeatERC20");
+  const deployedBibimbeatERC20 = await BibimbeatERC20.attach('0x04dBCbafba943Be87f01C0E29CEd94C5A561Be55'); 
+
+  // const bibimbeatERC20 = await upgrades.deployProxy(BibimbeatERC20);
+
+  const BibimbeatERC20V2 = await ethers.getContractFactory("BibimbeatERC20V2");
+  const bibimbeatERC20V2 = await upgrades.upgradeProxy(deployedBibimbeatERC20, BibimbeatERC20V2);
+  // console.log("BibimbeatERC20 deployed to:", bibimbeatERC20.address);
+  console.log("BibimbeatERC20V2 deployed to:", bibimbeatERC20V2.address);
+}
+
+// We recommend this pattern to be able to use async/await everywhere
+// and properly handle errors.
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
