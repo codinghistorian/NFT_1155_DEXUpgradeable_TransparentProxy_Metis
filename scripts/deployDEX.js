@@ -1,0 +1,35 @@
+// We require the Hardhat Runtime Environment explicitly here. This is optional
+// but useful for running the script in a standalone fashion through `node <script>`.
+//
+// When running the script with `npx hardhat run <script>` you'll find the Hardhat
+// Runtime Environment's members available in the global scope.
+const hre = require("hardhat");
+const { ethers, upgrades } = require("hardhat");
+async function main() {
+  // Hardhat always runs the compile task when running scripts with its command
+  // line interface.
+  //
+  // If this script is run directly using `node` you may want to call compile
+  // manually to make sure everything is compiled
+  // await hre.run('compile');
+  let bibimbeatERC20Address = '0x04dBCbafba943Be87f01C0E29CEd94C5A561Be55';
+  let bibimbeatERC1155Address = '0xaA9213B0cf4ff23bD9dAdD944c862Daf2707dBF8';
+  
+
+  // We get the contract to deploy
+  const BibimbeatNFTDex = await ethers.getContractFactory("BibimbeatNFTDex");
+  const bibimbeatNFTDex = await upgrades.deployProxy(BibimbeatNFTDex, [bibimbeatERC20Address, bibimbeatERC1155Address]);
+
+  bibimbeatNFTDex.deployed();
+  
+  console.log("BibimbeatNFTDEX deployed to:", bibimbeatNFTDex.address);
+}
+
+// We recommend this pattern to be able to use async/await everywhere
+// and properly handle errors.
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

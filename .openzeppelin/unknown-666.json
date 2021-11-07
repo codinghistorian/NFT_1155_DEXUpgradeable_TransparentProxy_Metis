@@ -59,6 +59,11 @@
       "address": "0xaA9213B0cf4ff23bD9dAdD944c862Daf2707dBF8",
       "txHash": "0x8fa7d8f09910ce025a23c988e3fc9072ee6db963abccab4b0fe3e8ba36cd2eb8",
       "kind": "transparent"
+    },
+    {
+      "address": "0x42F83e96b055C83315DA11F89C558F1E5c7984AB",
+      "txHash": "0x7d6f4ebd5b058c0a71c687232b540154cb01e377a3d948efaa3dc80c3988a951",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -536,6 +541,132 @@
           },
           "t_array(t_uint256)50_storage": {
             "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "90ecc95347ca8f5d2b553540ced4a61bb9394ea555f4801a6b18bd9fdc28ce2b": {
+      "address": "0xC81D59bFEFdd3A0a1C13BD2916d559D98671ba62",
+      "txHash": "0x761d6b9b19af32669fac6f3548a2cd9a76ace7713f1ab5234594ccb16ddd60d9",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:25"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:30"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:20"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:74"
+          },
+          {
+            "contract": "BibimbeatNFTDex",
+            "label": "trades",
+            "type": "t_mapping(t_uint256,t_struct(Trade)1124_storage)",
+            "src": "contracts/BibimbeatNFTDex.sol:29"
+          },
+          {
+            "contract": "BibimbeatNFTDex",
+            "label": "currencyToken",
+            "type": "t_contract(IERC20Upgradeable)804",
+            "src": "contracts/BibimbeatNFTDex.sol:31"
+          },
+          {
+            "contract": "BibimbeatNFTDex",
+            "label": "itemToken",
+            "type": "t_contract(IERC1155Upgradeable)726",
+            "src": "contracts/BibimbeatNFTDex.sol:32"
+          },
+          {
+            "contract": "BibimbeatNFTDex",
+            "label": "tradeCounter",
+            "type": "t_uint256",
+            "src": "contracts/BibimbeatNFTDex.sol:33"
+          },
+          {
+            "contract": "BibimbeatNFTDex",
+            "label": "marketAddress",
+            "type": "t_address",
+            "src": "contracts/BibimbeatNFTDex.sol:34"
+          }
+        ],
+        "types": {
+          "t_mapping(t_uint256,t_struct(Trade)1124_storage)": {
+            "label": "mapping(uint256 => struct BibimbeatNFTDex.Trade)"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_struct(Trade)1124_storage": {
+            "label": "struct BibimbeatNFTDex.Trade",
+            "members": [
+              {
+                "label": "poster",
+                "type": "t_address"
+              },
+              {
+                "label": "creator",
+                "type": "t_address"
+              },
+              {
+                "label": "item",
+                "type": "t_uint256"
+              },
+              {
+                "label": "amount",
+                "type": "t_uint256"
+              },
+              {
+                "label": "price",
+                "type": "t_uint256"
+              },
+              {
+                "label": "status",
+                "type": "t_bytes32"
+              }
+            ]
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_bytes32": {
+            "label": "bytes32"
+          },
+          "t_contract(IERC20Upgradeable)804": {
+            "label": "contract IERC20Upgradeable"
+          },
+          "t_contract(IERC1155Upgradeable)726": {
+            "label": "contract IERC1155Upgradeable"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
           }
         }
       }

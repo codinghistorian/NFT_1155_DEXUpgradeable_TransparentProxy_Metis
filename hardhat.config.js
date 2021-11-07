@@ -6,6 +6,8 @@ require("dotenv").config();
 
 module.exports = {
   networks: {
+    hardhat: {
+    },
     // rinkeby: {
     //   url: process.env.rinkebyUrl,
     //   accounts: [process.env.privateKey],
