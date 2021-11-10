@@ -23,7 +23,6 @@ describe("NFTDEX", function () {
     
     expect(await bibimbeatNFTDex.tradeCounter()).to.equal("0");
     expect(await bibimbeatNFTDex.currencyToken()).to.equal(bibimbeatERC20Address);
-    
   });
   
 });

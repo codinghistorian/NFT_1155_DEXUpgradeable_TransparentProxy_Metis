@@ -1,3 +1,11 @@
+211110 15:49 note
+
+Metis(588)
+BibimbeatERC20 deployed to: 0x54cC34B1C8C93Dda6D703CC1F8789fe4a4434c51
+BibimbeatERC1155 deployed to: 0x93f71d1719023396BD9C30d882c22477A478e9ca
+BibimbeatNFTDEX deployed to: 0x0477fcd6Bcc35B3cE3d56A408a3D5b65A0fa6071
+
+
 211107 13:44 note
 
 

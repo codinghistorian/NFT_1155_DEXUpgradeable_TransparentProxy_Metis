@@ -1,7 +1,7 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-ethers");
 require("@openzeppelin/hardhat-upgrades");
-require("@metis.io/hardhat-mvm");
+// require("@metis.io/hardhat-mvm");
 require("dotenv").config();
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
     //   url: process.env.rinkebyUrl,
     //   accounts: [process.env.privateKey],
     // },
-    metis: {
+    metis588: {
       url: process.env.metisUrl,
       accounts: [process.env.privateKey],
       // gasPrice: 15000000,

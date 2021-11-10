@@ -12,8 +12,8 @@ async function main() {
   // If this script is run directly using `node` you may want to call compile
   // manually to make sure everything is compiled
   // await hre.run('compile');
-  let bibimbeatERC20Address = '0x04dBCbafba943Be87f01C0E29CEd94C5A561Be55';
-  let bibimbeatERC1155Address = '0xaA9213B0cf4ff23bD9dAdD944c862Daf2707dBF8';
+  let bibimbeatERC20Address = '0x54cC34B1C8C93Dda6D703CC1F8789fe4a4434c51';
+  let bibimbeatERC1155Address = '0x93f71d1719023396BD9C30d882c22477A478e9ca';
   
 
   // We get the contract to deploy

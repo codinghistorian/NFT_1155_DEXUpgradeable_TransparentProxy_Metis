@@ -31,9 +31,11 @@ contract BibimbeatNFTDex is IERC1155ReceiverUpgradeable, Initializable, OwnableU
     IERC20Upgradeable public currencyToken;
     IERC1155Upgradeable public itemToken;
     uint256 public tradeCounter;
-    address public marketAddress;
+    address public feeReceiver;
     
+
     event TradeStatusChange(uint256 tradeCounter, bytes32 status);
+    event TradeLog(address poster, address creator, uint256 item, uint256 amount, uint price, bytes32 status, uint256 tradeCounter);
     
     // NFTs not minted not from our smart cotract should not pass
     
@@ -42,7 +44,7 @@ contract BibimbeatNFTDex is IERC1155ReceiverUpgradeable, Initializable, OwnableU
         currencyToken = IERC20Upgradeable(_currencyTokenAddress);
         itemToken = IERC1155Upgradeable(_itemTokenAddress);
         tradeCounter = 0;
-        marketAddress = msg.sender;
+        feeReceiver = msg.sender;
     }
     
 
@@ -54,6 +56,7 @@ contract BibimbeatNFTDex is IERC1155ReceiverUpgradeable, Initializable, OwnableU
         require(itemToken.balanceOf(msg.sender, _item) >= _amount, "insufficient amount of NFT!");
         itemToken.safeTransferFrom(msg.sender, address(this), _item, _amount, "");
         trades[tradeCounter] = Trade(msg.sender, _creator, _item, _amount, _price, "OPEN");
+        emit TradeLog(msg.sender, _creator, _item, _amount, _price, "OPEN", tradeCounter);
         tradeCounter++;
         emit TradeStatusChange(tradeCounter - 1, "OPEN");
     }
@@ -71,7 +74,7 @@ contract BibimbeatNFTDex is IERC1155ReceiverUpgradeable, Initializable, OwnableU
         
         currencyToken.transferFrom(msg.sender, trade.poster, priceWithoutFee);
         currencyToken.transferFrom(msg.sender, trade.creator, creatorFee);
-        currencyToken.transferFrom(msg.sender, marketAddress, marketFee);
+        currencyToken.transferFrom(msg.sender, feeReceiver, marketFee);
         
         itemToken.safeTransferFrom(address(this), msg.sender, trade.item, _amount, "");
         if (trades[_tradeCounter].amount == _amount) {
@@ -82,6 +85,7 @@ contract BibimbeatNFTDex is IERC1155ReceiverUpgradeable, Initializable, OwnableU
             trades[_tradeCounter].amount -= _amount;
             trades[_tradeCounter].status = "OPEN";
             emit TradeStatusChange(_tradeCounter, "OPEN");
+
         }
                 
         // UpdateOwnedToken(factoryAddress).updateOwnedTokenList(trade.item, trade.amount, msg.sender, trade.poster);
